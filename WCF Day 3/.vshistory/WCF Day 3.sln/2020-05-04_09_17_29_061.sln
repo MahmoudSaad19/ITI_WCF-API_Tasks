@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delete me", "delete me\delete me.csproj", "{B8EA388A-F8D9-4EDF-880C-B3AB324A8C82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8EA388A-F8D9-4EDF-880C-B3AB324A8C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EA388A-F8D9-4EDF-880C-B3AB324A8C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EA388A-F8D9-4EDF-880C-B3AB324A8C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EA388A-F8D9-4EDF-880C-B3AB324A8C82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F3F4AF9-B319-4B2A-8FE1-4DC0BFD1AFC9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+C:\Users\Mahmoud\source\repos\WCF Day 1 Labs\MathService\bin\Debug\MathService.dll.config
+C:\Users\Mahmoud\source\repos\WCF Day 1 Labs\MathService\bin\Debug\MathService.dll
+C:\Users\Mahmoud\source\repos\WCF Day 1 Labs\MathService\bin\Debug\MathService.pdb
+C:\Users\Mahmoud\source\repos\WCF Day 1 Labs\MathService\obj\Debug\MathService.csprojAssemblyReference.cache
+C:\Users\Mahmoud\source\repos\WCF Day 1 Labs\MathService\obj\Debug\MathService.dll
+C:\Users\Mahmoud\source\repos\WCF Day 1 Labs\MathService\obj\Debug\MathService.pdb

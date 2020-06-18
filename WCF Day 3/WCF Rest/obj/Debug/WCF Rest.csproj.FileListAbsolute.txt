@@ -1,0 +1,11 @@
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\WCF Rest.dll.config
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\WCF Rest.dll
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\WCF Rest.pdb
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\EntityFramework.dll
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\EntityFramework.xml
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\obj\Debug\WCF Rest.csprojAssemblyReference.cache
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\obj\Debug\WCF Rest.csproj.CopyComplete
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\obj\Debug\WCF Rest.dll
+C:\Users\Mahmoud\source\repos\WCF Day 3\WCF Rest\obj\Debug\WCF Rest.pdb

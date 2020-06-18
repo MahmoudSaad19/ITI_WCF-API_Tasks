@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.5.0.js"></script>
+    <style>
+        input,select{
+            display:block;
+            margin-left:10%;
+            margin-bottom:5px;
+            font-size:20px;
+            width:50%;
+            border-radius:15px 15px;
+            box-shadow:2px 2px 2px 2px cornflowerblue;
+            text-align:center;
+            color:darkorange;
+        }
+        table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+    </style>
+</head>
+<body>
+    <div id="load" style="width: 100%; height: 100%; background-color:lavender; align-content: center; text-align: center;">
+        <h1 style="color:cornflowerblue;">Loading.....</h1>
+    </div>
+    <div style="display:flex;padding:4%;width:100%;border-collapse: collapse;">
+        <div style="width:50%;">
+            <table style="margin:10px auto;display:inline-block;">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                        <th>Department Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        </div>
+        <div style="width:50%;">
+            <select onchange="change()">
+            </select>
+            <input type="text" id="Name" placeholder="Name" class="data" />
+            <input type="number" id="Age" placeholder="Age" class="data" min="1" max="60" />
+            <input type="number" id="Salary" placeholder="Salary" class="data" max="1000000" min="1" />
+            <input type="number" id="DeptId" max="4" min="1" class="data" placeholder="Department Id ( 1 - 4 )" />
+            <input type="button" value="Add" onclick="addemp()" />
+            <input type="button" value="Edit" id="edit" onclick="edit()" />
+            <input type="button" value="Delete" id="Delete" onclick="Delete()" />
+        </div>
+
+    </div>
+    <script>
+        function change() {
+            $('#edit').show();
+            $('#Delete').show();
+            $.ajax({
+                url: "http://localhost/apihost/api/employee",
+                    method: "Get",
+                success: function (obj) {
+                    for (i of obj) {
+                        if (i.Id == $('select').val()) {
+                            $('#Name').val(i.Name);
+                            $('#Age').val(i.Age);
+                            $('#Salary').val(i.Salary);
+                            $('#DeptId').val(i.DeptID);
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+
+            
+        }
+
+        function addemp() {
+                var emp = {
+                Name: $('#Name').val(),
+                Age: $('#Age').val(),
+                Salary: $('#Salary').val(),
+                DeptId: $('#DeptId').val()
+                }
+
+                $.ajax({
+                url: "http://localhost/apihost/api/employee",
+                    method: "Post",
+                    data: emp,
+                    success: function (obj) {
+                       loadPage();
+                       console.table(JSON.stringify(obj));
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+        }
+
+        function edit() {
+            var emp = {
+                Id: parseInt( $('select').val()),
+                Name: $('#Name').val(),
+                Age: $('#Age').val(),
+                Salary: $('#Salary').val(),
+                DeptId: $('#DeptId').val()
+                }
+
+                $.ajax({
+                url: "http://localhost/apihost/api/employee",//+parseInt( $('select').val()),
+                    method: "PUT",
+                    data: emp,
+                    success: function (obj) {
+                        console.table(JSON.stringify(obj));
+                        loadPage();
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+        }
+
+        function Delete() {
+                
+                $.ajax({
+                url: "http://localhost/apihost/api/employee/"+parseInt( $('select').val()),
+                    method: "Delete",
+                success: function (obj) {
+                    console.table(JSON.stringify(obj));
+                    loadPage();
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+        }
+
+        function loadPage() {
+             $.ajax({
+                url: "http://localhost/apihost/api/employee",
+                method: "Get",
+                 success: function (obj) {
+                     $('select').find('option').remove().end()
+                         .append('<option disabled selected>Select Id</option>');
+                     $('.data').val('');
+                    for (i of obj) {
+                        let option = document.createElement("option");
+                        let tr = document.createElement("tr");
+                        option.text = i.Id;
+                        $('select')[0].add(option);                        
+                        $('tbody').append('<tr>' +
+                            '<td>' + i.Id + '</td>' +
+                            '<td>' + i.Name + '</td>' +
+                            '<td>' + i.Age + '</td>' +
+                            '<td>' + i.Salary + '</td>' +
+                            '<td>' + i.DeptID + '</td>' +
+                            '</tr>');
+                    }
+                    $('input,select').show();
+                    $('#load').hide();
+                    $('#edit').hide();
+                    $('#Delete').hide();
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+        }
+
+        $(function () {
+            $('input,select').hide();
+
+            loadPage();
+
+        });
+    </script>
+</body>
+</html>

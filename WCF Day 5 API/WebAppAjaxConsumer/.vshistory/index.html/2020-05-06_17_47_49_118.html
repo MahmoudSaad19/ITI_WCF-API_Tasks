@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.5.0.js"></script>
+</head>
+<body>
+    <select onchange="change()">
+        <option disabled selected>Select id</option>
+    </select>
+    <input type="text" id="Name" />
+    <input type="number" id="Age" />
+    <input type="number" id="Salary" />
+    <input type="number" id="DeptId" />
+    <input type="button" value="Add" onclick="addemp()" />
+    <input type="button" value="Edit" id="edit" onclick="edit()" />
+    <input type="button" value="Delete" id="Delete" onclick="Delete()" />
+    <script>
+        function change() {
+            $('#edit').show();
+            $('#Delete').show();
+            $.ajax({
+                url: "http://localhost/apihost/api/employee",
+                    method: "Get",
+                success: function (obj) {
+                    for (i of obj) {
+                        if (i.Id == $('select').val()) {
+                            $('#Name').val(i.Name);
+                            $('#Age').val(i.Age);
+                            $('#Salary').val(i.Salary);
+                            $('#DeptId').val(i.DeptId);
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+
+            
+        }
+        function addemp() {
+                var emp = {
+                Name: $('#Name').val(),
+                Age: $('#Age').val(),
+                Salary: $('#Salary').val(),
+                DeptId: $('#DeptId').val()
+                }
+
+                $.ajax({
+                url: "http://localhost/apihost/api/employee",
+                    method: "Post",
+                    data: emp,
+                success: function (obj) {
+                    //alert(JSON.stringify(obj));
+                    console.table(JSON.stringify(obj));
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+        }
+
+        $(function () {         
+            
+            $.ajax({
+                url: "http://localhost/apihost/api/employee",
+                method: "Get",
+                success: function (obj) {
+                    //alert(JSON.stringify(obj));
+                    console.table(JSON.stringify(obj));
+                    for (i of obj) {
+                        let option = document.createElement("option");
+                        console.table(i);
+                        option.text = i.Id;
+                        $('select')[0].add(option);
+                    }
+                },
+                error: function (err) {
+                    alert(err.state());
+                }
+                
+            });
+
+        });
+    </script>
+</body>
+</html>
